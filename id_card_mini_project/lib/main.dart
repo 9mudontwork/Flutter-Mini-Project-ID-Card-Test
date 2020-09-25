@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'qoute.dart';
 
 void main() {
   runApp(MaterialApp(home: QuoteList()));
@@ -10,10 +11,10 @@ class QuoteList extends StatefulWidget {
 }
 
 class _QuoteListState extends State<QuoteList> {
-  List<String> quotes = [
-    'ทดสอบ ข้อความที่ 111111111',
-    'ทดสอบ ข้อความที่ 222222222',
-    'ทดสอบ ข้อความที่ 333333333',
+  List<Quote> quotes = [
+    Quote(author: 'ant', text: 'ข้อความของ มด'),
+    Quote(author: 'bird', text: 'ข้อความของ นก'),
+    Quote(author: 'car', text: 'ข้อความของ แมว'),
   ];
 
   @override
@@ -26,7 +27,9 @@ class _QuoteListState extends State<QuoteList> {
           backgroundColor: Colors.redAccent,
         ),
         body: Column(
-          children: quotes.map((qoute) => Text(qoute)).toList(),
+          children: quotes
+              .map((quote) => Text('${quote.text} - ${quote.author}'))
+              .toList(),
         ));
   }
 }
