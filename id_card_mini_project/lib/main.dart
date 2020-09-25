@@ -10,6 +10,8 @@ class MuCard extends StatefulWidget {
 }
 
 class _MuCardState extends State<MuCard> {
+  int devLevel = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,6 +21,15 @@ class _MuCardState extends State<MuCard> {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            devLevel += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[800],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
@@ -53,7 +64,7 @@ class _MuCardState extends State<MuCard> {
             ),
             SizedBox(height: 10),
             Text(
-              '8',
+              '$devLevel',
               style: TextStyle(
                 color: Colors.amberAccent[200],
                 letterSpacing: 2,
