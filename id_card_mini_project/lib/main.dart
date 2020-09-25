@@ -1,95 +1,32 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: MuCard()));
+  runApp(MaterialApp(home: QuoteList()));
 }
 
-class MuCard extends StatefulWidget {
+class QuoteList extends StatefulWidget {
   @override
-  _MuCardState createState() => _MuCardState();
+  _QuoteListState createState() => _QuoteListState();
 }
 
-class _MuCardState extends State<MuCard> {
-  int devLevel = 0;
+class _QuoteListState extends State<QuoteList> {
+  List<String> quotes = [
+    'ทดสอบ ข้อความที่ 111111111',
+    'ทดสอบ ข้อความที่ 222222222',
+    'ทดสอบ ข้อความที่ 333333333',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[900],
-      appBar: AppBar(
-        title: Text('i3acksp4ce Card'),
-        centerTitle: true,
-        backgroundColor: Colors.grey[850],
-        elevation: 0,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            devLevel += 1;
-          });
-        },
-        child: Icon(Icons.add),
-        backgroundColor: Colors.grey[800],
-      ),
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: CircleAvatar(
-                backgroundImage: AssetImage('assets/thumb.jpg'),
-                radius: 40,
-              ),
-            ),
-            Divider(height: 90, color: Colors.grey[600]),
-            Text(
-              'NAME',
-              style: TextStyle(color: Colors.grey, letterSpacing: 2),
-            ),
-            SizedBox(height: 10),
-            Text(
-              'i3acksp4ce',
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2,
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 30),
-            Text(
-              'CURRENT DEV LEVEL',
-              style: TextStyle(color: Colors.grey, letterSpacing: 2),
-            ),
-            SizedBox(height: 10),
-            Text(
-              '$devLevel',
-              style: TextStyle(
-                color: Colors.amberAccent[200],
-                letterSpacing: 2,
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            SizedBox(height: 30),
-            Row(
-              children: [
-                Icon(
-                  Icons.email,
-                  color: Colors.grey[400],
-                ),
-                SizedBox(width: 10),
-                Text(
-                  'dev@test.com',
-                  style: TextStyle(
-                      color: Colors.grey[400], fontSize: 18, letterSpacing: 1),
-                ),
-              ],
-            ),
-          ],
+        backgroundColor: Colors.grey[200],
+        appBar: AppBar(
+          title: Text('Awesome Quotes'),
+          centerTitle: true,
+          backgroundColor: Colors.redAccent,
         ),
-      ),
-    );
+        body: Column(
+          children: quotes.map((qoute) => Text(qoute)).toList(),
+        ));
   }
 }
